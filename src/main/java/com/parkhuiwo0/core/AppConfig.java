@@ -2,6 +2,7 @@ package com.parkhuiwo0.core;
 
 import com.parkhuiwo0.core.discount.DiscountPolicy;
 import com.parkhuiwo0.core.discount.FixDiscountPolicy;
+import com.parkhuiwo0.core.discount.RateDiscountPolicy;
 import com.parkhuiwo0.core.member.MemberRepository;
 import com.parkhuiwo0.core.member.MemberService;
 import com.parkhuiwo0.core.member.MemberServiceImpl;
@@ -24,7 +25,8 @@ public class AppConfig {
     }
 
     public DiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
+//        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 
 }
