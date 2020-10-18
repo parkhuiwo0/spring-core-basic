@@ -27,4 +27,12 @@ class ApplicationContextBasicFindText {
         MemberService memberService = ac.getBean(MemberService.class);
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
+
+
+    @Test
+    @DisplayName("구체 타입으로 조회")
+    void findBeanByType2() {
+        MemberService memberService = ac.getBean("memberService", MemberServiceImpl.class);
+        assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
+    }
 }
