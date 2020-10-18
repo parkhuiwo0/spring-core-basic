@@ -6,9 +6,13 @@ import com.parkhuiwo0.core.member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.nio.channels.MembershipKey;
+
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationContextBasicFindText {
 
@@ -34,5 +38,15 @@ class ApplicationContextBasicFindText {
     void findBeanByType2() {
         MemberService memberService = ac.getBean("memberService", MemberServiceImpl.class);
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
+    }
+
+    @Test
+    @DisplayName("빈 이름으로 조회X")
+    void findBeanByTypeX() {
+//        ac.getBean("xxxxx", MemberService.class);
+        MemberService xxxxx = ac.getBean("xxxxx", MemberService.class); // 예외 발생
+        assertThrows(NoSuchBeanDefinitionException.class, () ->
+                ac.getBean("xxxxx", MemberService.class));
+
     }
 }
