@@ -6,7 +6,10 @@ import com.parkhuiwo0.core.discount.RateDiscountPolicy;
 import com.parkhuiwo0.core.member.Member;
 import com.parkhuiwo0.core.member.MemberRepository;
 import com.parkhuiwo0.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
@@ -19,6 +22,7 @@ public class OrderServiceImpl implements OrderService {
 
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
