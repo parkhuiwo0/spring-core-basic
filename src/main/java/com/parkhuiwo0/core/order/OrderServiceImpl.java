@@ -1,5 +1,6 @@
 package com.parkhuiwo0.core.order;
 
+import com.parkhuiwo0.core.annotation.MainDiscountPolicy;
 import com.parkhuiwo0.core.discount.DiscountPolicy;
 import com.parkhuiwo0.core.discount.FixDiscountPolicy;
 import com.parkhuiwo0.core.discount.RateDiscountPolicy;
@@ -41,7 +42,7 @@ public class OrderServiceImpl implements OrderService {
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
-    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
