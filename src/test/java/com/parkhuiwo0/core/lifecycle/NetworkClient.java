@@ -1,6 +1,9 @@
 package com.parkhuiwo0.core.lifecycle;
 
-public class NetworkClient {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class NetworkClient implements InitializingBean, DisposableBean {
 
     private String url;
 
@@ -26,5 +29,18 @@ public class NetworkClient {
     // 서비스 종료시 호출
     public void disConnect() {
         System.out.println("close : " + url);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("NetworkClient.afterPropertiesSet");
+        connect();
+        call("초기화 연결 메시지");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("NetworkClient.destroy");
+        disConnect();
     }
 }
